@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
+import { Products, Navigation} from './components';
 
 const App = () => {
     return (
         <div>
-            PTECH
+            <Navigation />
+            <Products />
         </div>
     )
 }

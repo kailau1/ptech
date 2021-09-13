@@ -14,7 +14,7 @@ const Products = () => {
         <Grid container justify ="center" spacing={4}>
             {products.map((product) => (
             <Grid itme key={product.id} xs={12} sm={6} md={4} lg={3}>
-                <Product />
+                <Products />
             </Grid>
             ))}
         </Grid>
@@ -23,4 +23,4 @@ const Products = () => {
 }
 
 
-export default products; 
+export default Products; 

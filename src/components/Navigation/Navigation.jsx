@@ -21,25 +21,25 @@ const Navigation = () => {
         <div onclick={toggleDrawer(false)} className={classes.list}>
             <List>
                 <ListItem>
-                    <Link to="./home">
+                    <Link to="/home">
                         <Button> HOME </Button>
                     </Link>
                 </ListItem>
                 <Divider />
                 <ListItem>
-                    <Link to="./shop">
+                    <Link to="/shop">
                         <Button> SHOP </Button>
                     </Link>
                 </ListItem>
                 <Divider />
                 <ListItem>
-                    <Link to="./login">
+                    <Link to="/login">
                         <Button> LOGIN </Button>
                     </Link>
                 </ListItem>
                 <Divider />
                 <ListItem>
-                    <Link to="./register">
+                    <Link to="/register">
                         <Button> REGISTER </Button>
                     </Link>
                 </ListItem>
@@ -50,8 +50,8 @@ const Navigation = () => {
             <AppBar position="fixed" className={classes.appBar} color="inherit">
                 <Toolbar>
                     <Typography variant="h6" className={classes.title} color ="inherit">
-                        <img src={logo} alt="PTECH" height="50px" className={classes.image}/>
-                        PTECH
+                        <img src={logo} alt="PokeMo Mobiles Online" height="50px" className={classes.image}/>
+                        PokeMo Mobiles
                     </Typography>
                     <div className={classes.grow} />
                     <IconButton onClick={toggleDrawer(true)}>

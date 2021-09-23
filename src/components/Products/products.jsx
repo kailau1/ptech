@@ -4,13 +4,13 @@ import {Grid} from '@material-ui/core';
 import Product from './Product/Product';
 import useStyles from './styles';
 
-const products = [
+let products = [
+    // TODO: Get products for mobiles category
     { id:1, name: 'iPhone 11', description: 'Apple iPhone 11', price: '£559'},
     { id:2, name: 'iPhone 12', description: 'Apple iPhone 12', price: '£659'},
 ];
 
-
-const Products = () => {
+let Products = () => {
     const classes = useStyles();
 
     return (    

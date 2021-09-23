@@ -12,6 +12,7 @@ const App = () => {
             <div className="App">
                 <Navigation />
                 <Switch>
+                <Route path="/" exact component={home} />
                 <Route path="/home" exact component={home} />
                 <Route path="/shop" exact component={shop} />
                 <Route path="/login" exact component={login} />
@@ -20,5 +21,7 @@ const App = () => {
         </Router>
     )
 }
+
+
 
 export default App;

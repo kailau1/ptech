@@ -21,7 +21,7 @@ const Navigation = () => {
         <div onclick={toggleDrawer(false)} className={classes.list}>
             <List>
                 <ListItem>
-                    <Link to="/home">
+                    <Link to="/">
                         <Button> HOME </Button>
                     </Link>
                 </ListItem>

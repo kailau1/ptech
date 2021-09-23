@@ -1,13 +1,20 @@
 import React from 'react';
 import { Card, CardMedia, CardContent, CardActions, Typography, IconButton, Button } from '@material-ui/core';
 import { AddShoppingCart } from '@material-ui/icons';
+import Link from '@material-ui/core/Link';
 import useStyles from './styles';
+
 
 const Product = ({product}) => {
     const classes = useStyles();
+    let detailUrl = "/detail/?productid=" + product.id;
     return (
         <Card className={classes.root}>
-            <CardMedia className={classes.media} image=''  title={product.name} />
+            <Link href={detailUrl}>
+                <CardMedia className={classes.media} 
+                    image='https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone11-select-2019-family_GEO_EMEA'  
+                    title={product.name} />
+            </Link>
             <CardContent>
                 <div className={classes.CardContent}>
                     <Typography variant="h5" gutterBottom>

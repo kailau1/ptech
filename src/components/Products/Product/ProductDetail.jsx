@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import ReactDOM from "react-dom";
 import { useLocation, BrowserRouter as Router } from "react-router-dom";
 import { Card, CardMedia, CardContent, CardActions, Typography, IconButton, Button } from '@material-ui/core';
@@ -16,32 +16,29 @@ const ProductDetail = ({product}) => {
     const [error, setError] = useState(null);
     const [items, setItems] = useState([]);
     const [ress, setRes] = useState("empty");
+    const itemsFound = useRef(undefined);
     const apiUrl = "http://localhost:3001/products/" + productId;
 
-        fetch(apiUrl)
-        .then((response) => response.json())
-        .then((data) => {
-            if (data === undefined) {
-                setItems([]);
-            } else {
-                setItems(data);
+        const fetchData = async () => {
+            try {
+                const result = await fetch(apiUrl);
+                const body = await result.json();
+                setItems(body);
+                itemsFound.current(body);
+
+            } catch(err) {
+                return "Failed to fetch from api"+err;
             }
-        })
-        ;
 
-    let fakeitems = JSON.parse('[{"ID":1001,"NAME":"IPhone 11","DESCRIPTION":"IPhone 11"},'+
-                '{ "ID": 1002, "NAME": "IPhone 12", "DESCRIPTION": "IPhone 12" },'+
-                '{"ID":1003,"NAME":"Samsung Galaxy 10","DESCRIPTION":"Samsung Galaxy 10"},'+
-                '{"ID":1004,"NAME":"Samsung Galaxy 10 Plus","DESCRIPTION":"Samsung Galaxy 10 Plus. Larger phone of the Galaxy 10 range."}]');
-        // setItems(fakeitems);
-        // ,
-        // (error) => {
-        //     setError(error);
-        // };
+        }
 
-    // if (error) {
-    //     return <div>Error: {error.message}</div>;
-    // } else {
+        // set the useEffect dependency to [] so it is the same as the initialized useState([]). 
+        // This tells react that the state has not changed after the fetchData call, and hence does not re-render.
+        // This fixes the looping fetch call.
+        useEffect(() => 
+            fetchData() 
+        , []);
+
         return (
             <Card className={classes.root}>
                 <CardContent>
@@ -55,19 +52,10 @@ const ProductDetail = ({product}) => {
                 <div>
                     Number of items: {items.length}
                     <br/>
-                    fakeItems: {fakeitems.map(item => <li>{item.NAME}</li>)}
-                    <br/>
-                    response: {ress}
-                    <br/>
                     <h2>Product Specifications</h2>
 
-                    <br/>
                     <ul>
-                    {items.map(item => 
-                    
-                        <li>{item.NAME}</li>
-                        
-                        )}
+                    {items != null && items.length && items.map(item => <li>{item.NAME}</li> )}
                     </ul>
                     <br/>
                     <div class="footer">

@@ -13,23 +13,18 @@ function useQuery() {
 const ProductDetail = ({product}) => {
     const classes = useStyles();
     const productId = useQuery().get("productid");
-    const [error, setError] = useState(null);
     const [items, setItems] = useState([]);
-    const [ress, setRes] = useState("empty");
-    const itemsFound = useRef(undefined);
-    const apiUrl = "http://localhost:3001/products/" + productId;
+    const apiUrl = "http://localhost:3001/attribs/" + productId;
 
         const fetchData = async () => {
             try {
                 const result = await fetch(apiUrl);
                 const body = await result.json();
                 setItems(body);
-                itemsFound.current(body);
 
             } catch(err) {
                 return "Failed to fetch from api"+err;
             }
-
         }
 
         // set the useEffect dependency to [] so it is the same as the initialized useState([]). 
@@ -47,15 +42,13 @@ const ProductDetail = ({product}) => {
                 </div>
                 <div>
                     <h2>Details for product {productId}</h2>
-                    <br/>
                 </div>
                 <div>
-                    Number of items: {items.length}
-                    <br/>
                     <h2>Product Specifications</h2>
-
                     <ul>
-                    {items != null && items.length && items.map(item => <li>{item.NAME}</li> )}
+                    {items != null && items.length && items.map(item => {
+                            return <li>{item.NAME}&nbsp;: {item.VALUE}</li> 
+                    })}
                     </ul>
                     <br/>
                     <div class="footer">

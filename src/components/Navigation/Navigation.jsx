@@ -50,7 +50,7 @@ const Navigation = () => {
             <AppBar position="fixed" className={classes.appBar} color="inherit">
                 <Toolbar>
                     <Typography variant="h6" className={classes.title} color ="inherit">
-                        <img src={logo} alt="PokeMo Mobiles Online" height="50px" className={classes.image}/>
+                        <a href="/"><img src={logo} alt="PokeMo Mobiles Online" height="50px" className={classes.image}/></a>
                         PokeMo Mobiles
                     </Typography>
                     <div className={classes.grow} />

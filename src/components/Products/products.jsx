@@ -20,7 +20,7 @@ let Products = () => {
     productId = '1001';
 
     const [items, setItems] = useState([]);
-    const apiUrl = "http://localhost:3001/products/" + productId;
+    const apiUrl = "http://localhost:3000/products/" + productId;
 
     const fetchData = async () => {
         try {

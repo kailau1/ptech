@@ -12,17 +12,17 @@ const Product = ({product}) => {
         <Card className={classes.root}>
             <Link href={detailUrl}>
                 <CardMedia className={classes.media} 
-                    image='https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone11-select-2019-family_GEO_EMEA'  
+                    image = { product.MEDIA == null ? '/images/iphone-11WHITE2.png' : product.MEDIA }
                     title={product.NAME} />
             </Link>
             <CardContent>
                 <div className={classes.CardContent}>
                     <Typography variant="h5" gutterBottom>
-                        {product.NAME}
+                        {product.NAME} 
                     </Typography>
-                    <Typography variant="h5">
-                        {product.price}
-                    </Typography>
+                    <font class='price'>
+                        {product.PRICE == null ? 'Enquire Price' : '£'+product.PRICE}
+                    </font>
                 </div>
                 <Typography variant="body 2" color="textSecondary">{product.DESCRIPTION}</Typography>  
             </CardContent>
@@ -30,7 +30,7 @@ const Product = ({product}) => {
                 <IconButton aria-label="Add to Cart">
                     <AddShoppingCart />
                 </IconButton> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                <Button variant="contained" color="textSecondary" > VIEW </Button>
+                <Button variant="contained" color="textSecondary" href={detailUrl} > VIEW </Button>
             </CardActions>
         </Card>
     );

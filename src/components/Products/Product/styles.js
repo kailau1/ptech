@@ -17,4 +17,9 @@ export default makeStyles(() => ({
         display: 'flex',
         justifyContent: 'space-between',
     },
+    price: {
+        fontSize: '15px',
+        fontFamily: 'Arial, Helvetica',
+    }
+
 }));

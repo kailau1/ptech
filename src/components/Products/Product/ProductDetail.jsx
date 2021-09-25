@@ -14,7 +14,7 @@ const ProductDetail = ({product}) => {
     const classes = useStyles();
     const productId = useQuery().get("productid");
     const [items, setItems] = useState([]);
-    const apiUrl = "http://localhost:3001/attribs/" + productId;
+    const apiUrl = "http://localhost:3000/attribs/" + productId;
 
         const fetchData = async () => {
             try {

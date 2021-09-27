@@ -64,23 +64,24 @@ export default function Homepage() {
       <main>
         <div className={classes.heroContent} color="primary">
           <Container maxWidth="sm">
-            <Typography component="h1" variant="h2" align="center" color="textPrimary">
-              PTECH's Online Store
+            <Typography component="h3" variant="h5" align="center" color="textPrimary">
+              &nbsp;Welcome to<br/>
+              P@KEMo Mobiles
             </Typography>
-            <Typography variant="h5" align="center" color="textSecondary" paragraph>
-              We sell only the top quality mobile phones and accessories
+            <Typography variant="h6" align="center" color="textSecondary" paragraph>
+              Get top quality mobile phones and accessories here!
             </Typography>
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justifyContent="center">
                 <Grid item>
-                <Link to="../../shop">
+                <Link to="/shop">
                   <Button variant="contained" color="primary">
                     Shop Now!
                   </Button>
                 </Link>
                 </Grid>
                 <Grid item>
-                <Link to="../..login">
+                <Link to="/login">
                   <Button variant="outlined" color="primary">
                     Register Now!
                   </Button>

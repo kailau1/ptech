@@ -39,7 +39,7 @@ export default function Login() {
       <CssBaseline />
       <Box m={2} pt={3} />
       <div className={classes.paper}>
-          <img src={logo} alt="PTECH" height="50px"/>
+          <img src={logo} alt="Pokemo Mobiles" height="50px"/>
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>

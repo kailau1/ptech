@@ -10,60 +10,86 @@ function useQuery() {
     return new URLSearchParams(useLocation().search);
 }
 
-const ProductDetail = ({product}) => {
+const ProductDetail = () => {
     const classes = useStyles();
     const productId = useQuery().get("productid");
-    const [items, setItems] = useState([]);
-    const apiUrl = "http://localhost:3000/attribs/" + productId;
+    const [attribs, setAttribs] = useState([]);
+    const [products, setProducts] = useState([]);
+    // const [product, setProduct] = useState({ ID: "", NAME: "", DESCRIPTION: ""});
+    const attribUrl = "http://localhost:3000/attribs/" + productId;
+    const productUrl = "http://localhost:3000/product/" + productId;
 
-        const fetchData = async () => {
-            try {
-                const result = await fetch(apiUrl);
-                const body = await result.json();
-                setItems(body);
-
-            } catch(err) {
-                return "Failed to fetch from api"+err;
+    const fetchData = async (url, type) => {
+        try {
+            const result = await fetch(url);
+            const body = await result.json();
+            switch (type) {
+                case 'attribs':
+                    setAttribs(body);
+                    console.log("Attribs found:" + attribs)
+                    break;
+                case 'prod':
+                    setProducts(body);
+                    console.log("single product found: " + JSON.parse(products))
+                    break;
+                default:
+                    console.log('Fetch data cannot be set. Type not defined.');
             }
+
+        } catch(err) {
+            return "Failed to fetch from api"+err;
         }
+    }
 
-        // set the useEffect dependency to [] so it is the same as the initialized useState([]). 
-        // This tells react that the state has not changed after the fetchData call, and hence does not re-render.
-        // This fixes the looping fetch call.
-        useEffect(() => 
-            fetchData() 
-        , []);
+    // set the useEffect dependency to [] so it is the same as the initialized useState([]). 
+    // This tells react that the state has not changed after the fetchData call, and hence does not re-render.
+    // This fixes the looping fetch call.
+    useEffect(() => 
+        fetchData(attribUrl, 'attribs')
+    , []);
 
-        return (
-            <Card className={classes.root}>
-                <CardContent>
-                <div>
-                    <br/><br/>
-                </div>
-                <div>
-                    <h2>Details for product {productId}</h2>
-                </div>
-                <div>
-                    <h2>Product Specifications</h2>
-                    <ul>
-                    {items != null && items.length && items.map(item => {
-                            return <li>{item.NAME}&nbsp;: {item.VALUE}</li> 
-                    })}
-                    </ul>
-                    <br/>
-                    <div class="footer">
-                       Footer 
-                    </div>
-                </div>
+    useEffect(() => 
+        fetchData(productUrl, 'prod')
+    , []);
+
+    return (
+        <Card className={classes.root}>
+
+            <br/>
+            
+            <CardContent>
+            <div>
+                <br/><br/>
+                {products != null && products.length && products.map(item => {
+                    return  <CardMedia className={classes.media} 
+                        image = {item.MEDIA == null ? '/images/iphone-11WHITE2.png' : item.MEDIA }
+                        title={item.NAME} />
+
+                })}
+            </div>
+            <div>
+                <h2>Details for product {productId}</h2>
+            </div>
+            <div>
+                <h2>Product Specifications</h2>
+                <ul>
+                {attribs != null && attribs.length && attribs.map(item => {
+                        return <li>{item.NAME}&nbsp;: {item.VALUE}</li> 
+                })}
+                </ul>
                 <br/>
-                <div>
-
-                    <Link href="/shop">See products</Link>
+                <div class="footer">
+                    Footer 
                 </div>
-                </CardContent>
-            </Card>
-        );
-    // } 
+            </div>
+            <br/>
+            <div>
+
+                <Link href="/shop">See Products</Link>
+            </div>
+            </CardContent>
+        </Card>
+    );
 };
 
 export default ProductDetail;

@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardMedia, CardContent, CardActions, Typography, IconButton, Button } from '@material-ui/core';
 import { AddShoppingCart } from '@material-ui/icons';
 import Link from '@material-ui/core/Link';
-import useStyles from './styles';
+import useStyles from '../../styles';
 
 
 const Product = ({product}) => {
@@ -16,15 +16,21 @@ const Product = ({product}) => {
                     title={product.NAME} />
             </Link>
             <CardContent>
-                <div className={classes.CardContent}>
-                    <Typography variant="h5" gutterBottom>
+                <div className={classes.cardContent}>
+                    <Typography variant="h6" gutterBottom>
                         {product.NAME} 
                     </Typography>
-                    <font class='price'>
-                        {product.PRICE == null ? 'Enquire Price' : '£'+product.PRICE}
-                    </font>
+                    <br/>
+                    <div>
+                        <font className={classes.price}>
+                            {product.PRICE == null ? 'Enquire Price' : '£'+product.PRICE}
+                        </font>
+                    </div>
                 </div>
-                <Typography variant="body 2" color="textSecondary">{product.DESCRIPTION}</Typography>  
+                <br/>
+                <div>
+                    <Typography variant="body2" color="textSecondary">{product.DESCRIPTION}</Typography>  
+                </div>
             </CardContent>
             <CardActions disableSpacing className={classes.CardActions}>
                 <IconButton aria-label="Add to Cart">

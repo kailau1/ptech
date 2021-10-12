@@ -5,6 +5,10 @@ import { MicNone } from '@material-ui/icons';
 const drawerWidth = 0;
 
 export default makeStyles((theme) => ({
+  root: {
+    maxWidth: '100%',
+    flexGrow: 1,
+  },
   appBar: {
     boxShadow: 'none',
     borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
@@ -13,6 +17,12 @@ export default makeStyles((theme) => ({
       marginLeft: drawerWidth,
     
     },
+  },
+  toolbar: theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.default,
+    padding: theme.spacing(3),
   },
   title: {
     flexGrow: 1,
@@ -71,9 +81,32 @@ export default makeStyles((theme) => ({
     }
   
   },
+  media: {
+      height: 0,
+      paddingTop: '55%'
+  },
+  cardActions: {
+      display:'flex',
+      justifyContent: 'flex-end',
+  },
+  cardContent: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      fontSize: '24px',
+      fontFamily: 'Arial',
+  },
+  smallCardContent: {
+      fontSize: '14px',
+      fontFamily: 'Arial',
+  },
+  priceOne: {
+      fontSize: '25px',
+      fontWeight: "bold",
+      fontFamily: 'Arial',
+  },
   price: {
-    fontSize: '16px'
+      fontSize: '20px'
   }
 
 
-  }));
+}));

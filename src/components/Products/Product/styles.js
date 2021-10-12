@@ -16,10 +16,18 @@ export default makeStyles(() => ({
     cardContent: {
         display: 'flex',
         justifyContent: 'space-between',
+        fontSize: '24px',
+        fontFamily: 'Arial',
+        backgroundColor: 'blue',
+    },
+    smallCardContent: {
+        fontSize: '12px',
+        backgroundColor: 'grey',
     },
     price: {
-        fontSize: '15px',
-        fontFamily: 'Arial, Helvetica',
+        fontSize: '25px',
+        fontWeight: "bold",
+        fontFamily: 'Arial',
     }
 
 }));

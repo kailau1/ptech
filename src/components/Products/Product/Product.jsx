@@ -16,15 +16,18 @@ const Product = ({product}) => {
                     title={product.NAME} />
             </Link>
             <CardContent>
-                <div className={classes.CardContent}>
-                    <Typography variant="h5" gutterBottom>
+                <div class='smallCardContent' className={classes.CardContent}>
+                    <Typography variant="h6" gutterBottom>
                         {product.NAME} 
                     </Typography>
-                    <font class='price'>
+                    <font class='cardContent'>
                         {product.PRICE == null ? 'Enquire Price' : '£'+product.PRICE}
                     </font>
                 </div>
-                <Typography variant="body 2" color="textSecondary">{product.DESCRIPTION}</Typography>  
+                <br/>
+                <div>
+                    <Typography variant="body2" color="textSecondary">{product.DESCRIPTION}</Typography>  
+                </div>
             </CardContent>
             <CardActions disableSpacing className={classes.CardActions}>
                 <IconButton aria-label="Add to Cart">

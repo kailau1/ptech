@@ -5,6 +5,7 @@ import home from './home'
 import login from './login'
 import shop from './shop'
 import productDetail from './productDetail'
+import cart from './cart'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
                 <Route path="/shop" exact component={shop} />
                 <Route path="/login" exact component={login} />
                 <Route path="/detail" exact component={productDetail} />
+                <Route path="/cart" exact component={cart} />
                 </Switch>
             </div>
         </Router>

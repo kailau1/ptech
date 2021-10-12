@@ -5,6 +5,7 @@ import { Card, CardMedia, CardContent, CardActions, Typography, IconButton, Butt
 import { AddShoppingCart } from '@material-ui/icons';
 import Link from '@material-ui/core/Link';
 import useStyles from './styles';
+import cart from '../../../cart';
 
 function useQuery() {
     return new URLSearchParams(useLocation().search);
@@ -15,9 +16,11 @@ const ProductDetail = () => {
     const productId = useQuery().get("productid");
     const [attribs, setAttribs] = useState([]);
     const [products, setProducts] = useState([]);
+    const [cartUrl, setCartUrl] = useState([]);
     // const [product, setProduct] = useState({ ID: "", NAME: "", DESCRIPTION: ""});
     const attribUrl = "http://localhost:3000/attribs/" + productId;
     const productUrl = "http://localhost:3000/product/" + productId;
+    // var cartUrl = "/cart";
 
     const fetchData = async (url, type) => {
         try {
@@ -26,11 +29,15 @@ const ProductDetail = () => {
             switch (type) {
                 case 'attribs':
                     setAttribs(body);
-                    console.log("Attribs found:" + attribs)
+                    console.log("Attribs found:" + JSON.parse(body));
                     break;
                 case 'prod':
                     setProducts(body);
-                    console.log("single product found: " + JSON.parse(products))
+                    console.log("single product found: " + JSON.stringify(body[0]))
+                    var firstProduct = body[0];
+                    var url = '/cart?name='+firstProduct.NAME+'&price='+firstProduct.PRICE;
+                    setCartUrl(url);
+                    console.log('cartUrl='+url);
                     break;
                 default:
                     console.log('Fetch data cannot be set. Type not defined.');
@@ -54,9 +61,7 @@ const ProductDetail = () => {
 
     return (
         <Card className={classes.root}>
-
             <br/>
-            
             <CardContent>
             <div>
                 <br/><br/>
@@ -64,30 +69,56 @@ const ProductDetail = () => {
                     return  <CardMedia className={classes.media} 
                         image = {item.MEDIA == null ? '/images/iphone-11WHITE2.png' : item.MEDIA }
                         title={item.NAME} />
-
                 })}
+
+            </div>
+            <br/>
+            <div>
+                 {/* TODO: products[0] not working intermittently */}
+                {products != null && products.length && products.map(item => {
+                return <span>
+                    {item.NAME}
+                </span>
+                })}
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <br/>
+
+                {products != null && products.length && products.map(item => {
+                return <span className='price'>
+                    £{item.PRICE}
+                </span>
+                })}
+
             </div>
             <div>
-                <h2>Details for product {productId}</h2>
-            </div>
-            <div>
-                <h2>Product Specifications</h2>
+                <h3>Product Specifications</h3>
                 <ul>
                 {attribs != null && attribs.length && attribs.map(item => {
                         return <li>{item.NAME}&nbsp;: {item.VALUE}</li> 
                 })}
                 </ul>
-                <br/>
-                <div class="footer">
-                    Footer 
-                </div>
             </div>
-            <br/>
             <div>
+            <CardActions disableSpacing className={classes.CardActions}>
 
+                {products != null && products.length && products.map(item => {
+                return <Link href={cartUrl}>
+                    <IconButton aria-label="Add to Cart">
+                        <AddShoppingCart href='/cart' />
+                    </IconButton> 
+                    Buy Now! 
+                </Link>
+                })}
+
+            </CardActions>
+
+            </div>
+            <div class="footer">
                 <Link href="/shop">See Products</Link>
             </div>
+
             </CardContent>
+
         </Card>
     );
 };

@@ -2,17 +2,11 @@ import React, {useState, useEffect} from 'react';
 import { useLocation, BrowserRouter as Router } from "react-router-dom";
 import {Grid} from '@material-ui/core';
 import Product from './Product/Product';
-import useStyles from './styles';
+import useStyles from '../styles';
 
 function useQuery() {
     return new URLSearchParams(useLocation().search);
 }
-
-let products2 = [
-    // TODO: Get products for mobiles category
-    { id:1001, name: 'iPhone 11', description: 'Apple iPhone 11', price: '£559'},
-    { id:1002, name: 'iPhone 12', description: 'Apple iPhone 12', price: '£659'},
-];
 
 let Products = () => {
     const classes = useStyles();

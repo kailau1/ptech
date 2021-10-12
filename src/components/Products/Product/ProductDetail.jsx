@@ -4,7 +4,7 @@ import { useLocation, BrowserRouter as Router } from "react-router-dom";
 import { Card, CardMedia, CardContent, CardActions, Typography, IconButton, Button } from '@material-ui/core';
 import { AddShoppingCart } from '@material-ui/icons';
 import Link from '@material-ui/core/Link';
-import useStyles from './styles';
+import useStyles from '../../styles';
 import cart from '../../../cart';
 
 function useQuery() {
@@ -84,7 +84,7 @@ const ProductDetail = () => {
                 <br/>
 
                 {products != null && products.length && products.map(item => {
-                return <span className='price'>
+                return <span className={classes.price}>
                     £{item.PRICE}
                 </span>
                 })}
@@ -92,7 +92,7 @@ const ProductDetail = () => {
             </div>
             <div>
                 <h3>Product Specifications</h3>
-                <ul>
+                <ul className={classes.smallCardContent}>
                 {attribs != null && attribs.length && attribs.map(item => {
                         return <li>{item.NAME}&nbsp;: {item.VALUE}</li> 
                 })}

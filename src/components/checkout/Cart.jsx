@@ -31,7 +31,7 @@ const Cart = () => {
                 <div style={{display: "flex", justifyContent: "flex-end", marginRight: "75px"}}>
                     <span><b>Total</b></span>
                     &nbsp;&nbsp;
-                    <span>£{price}</span>
+                    <span className={classes.price}>£{price}</span>
                 </div>
             </CardContent>
 

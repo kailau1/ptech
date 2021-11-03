@@ -11,7 +11,6 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Navigation from '../../components/Navigation/Navigation';
 import Box from '@material-ui/core/Box';
 import {Link} from 'react-router-dom';
 
@@ -50,12 +49,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const cards = [
-  {id:1, location:"Bristol", map:"https://www.google.com/maps/dir//Currys+PC+World+Featuring+Carphone+Warehouse,+Unit+1+Cribbs+Causeway,+Bristol+BS34+5TX/@51.5112345,-2.5131588,8z/data=!3m1!5s0x487191805d17cc09:0x6e3ce34b056bafa5!4m8!4m7!1m0!1m5!1m1!1s0x4870cfcaf2de042d:0x895db98be0cd48a1!2m2!1d-2.6010799!2d51.5270912"},
-  {id:2, location:"London", map:"https://www.google.com/maps/dir//47,+Currys+PC+World+Featuring+Carphone+Warehouse,+53+Kensington+High+St,+London+W8+5ED/@51.5020847,-0.1917653,17z/data=!3m1!5s0x48760ff7b4304e4d:0x457ba6b3a3f68b90!4m16!1m6!3m5!1s0x487604df7f190ecb:0x497bab278d17090e!2sCurrys+PC+World+Featuring+Carphone+Warehouse!8m2!3d51.5020847!4d-0.1895766!4m8!1m0!1m5!1m1!1s0x487604df7f190ecb:0x497bab278d17090e!2m2!1d-0.1895766!2d51.5020847!3e1"},
-  {id:3, location:"Manchester", map:"https://www.google.com/maps/dir//Currys+PC+World+Featuring+Carphone+Warehouse,+Manchester+Arndale,+The+Arndale+Shopping+Center,+Manchester/@53.4830184,-2.3122058,12z/data=!3m2!4b1!5s0x487bb1c72e83f029:0x7edf0a3af8115e70!4m9!4m8!1m0!1m5!1m1!1s0x487bb1c72964d56f:0x4426646c9691e678!2m2!1d-2.2421666!2d53.4830389!3e1"}
+  {id:1, location:"Shop Mobile Phones", link:"./shop?categoryid=1001" },
+  {id:1, location:"Shop Accessories", link:"./shop?categoryid=1002" },
+
 ];
 
-export default function Homepage() {
+export default function Category() {
   const classes = useStyles();
   return (
     <React.Fragment>
@@ -66,23 +65,18 @@ export default function Homepage() {
           <Container maxWidth="sm">
             <Typography component="h3" variant="h5" align="center" color="textPrimary">
               &nbsp;Welcome to<br/>
-              PTECH
+              PTECH's Shop
             </Typography>
             <Typography variant="h6" align="center" color="textSecondary" paragraph>
-              Get top quality mobile phones and accessories here!
+              Get our top quality mobile phones and accessories here!
             </Typography>
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justifyContent="center">
                 <Grid item>
-                <Link to="/category">
-                  <Button variant="contained" color="primary">
-                    Shop Now!
-                  </Button>
-                </Link>
                 </Grid>
                 <Grid item>
                 <Link to="/login">
-                  <Button variant="outlined" color="primary">
+                  <Button variant="contained" color="primary">
                     Register Now!
                   </Button>
                 </Link>
@@ -92,7 +86,7 @@ export default function Homepage() {
           </Container>
         </div>
         <Container className={classes.cardGrid} maxWidth="md">
-          <Grid container spacing={6}>
+          <Grid container spacing={6} alignItems='center' justify="center">
             {cards.map((card) => (
               <Grid item key={card} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
@@ -102,16 +96,10 @@ export default function Homepage() {
                     title="Image title"
                   />
                   <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Visit our store!
-                    </Typography>
-                    <Typography>
-                      Location: {card.location}
-                    </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button variant="contained" size="small" color="primary" href={card.map} target="_blank">
-                      FIND ON MAP!
+                    <Button variant="contained" size="small"  href={card.link} target="_blank">
+                      {card.location}
                     </Button>
                   </CardActions>
                 </Card>

@@ -106,7 +106,31 @@ export default makeStyles((theme) => ({
   },
   price: {
       fontSize: '20px'
+  },
+  box: {
+    height: 100,
+    display: "flex",
+    border: "1px solid black",
+    padding: 8
+  },
+  centerBox: {
+    justifyContent: "flex-end",
+    alignItems: "flex-end"
+  },
+  checkout: {
+    display: 'block',
+    width: '50vw',
+    height: '45vw'
+  },
+  div: {
+    display: "flex" ,
+    justifyContent: "center",
+    alignItems: "center"
   }
+
+  
+
+  
 
 
 }));

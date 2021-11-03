@@ -1,45 +1,40 @@
-import React from 'react';
-import { Card, CardMedia, CardContent, CardActions, Typography, IconButton, Button } from '@material-ui/core';
-import { AddShoppingCart } from '@material-ui/icons';
-import Link from '@material-ui/core/Link';
-import useStyles from '../../styles';
+/* eslint-disable jsx-a11y/alt-text */
+import React from "react";
+import {
+  Card,
+  CardMedia,
+  CardContent,
+  CardActions,
+  Typography,
+  Button,
+} from "@material-ui/core";
+import Link from "@material-ui/core/Link";
+import { makeStyles } from "@material-ui/core/styles";
 
 
-const Product = ({product}) => {
-    const classes = useStyles();
-    let detailUrl = "/detail/?productid=" + product.ID;
-    return (
-        <Card className={classes.root}>
-            <Link href={detailUrl}>
-                <CardMedia className={classes.media} 
-                    image = { product.MEDIA == null ? '/images/iphone-11WHITE2.png' : product.MEDIA }
-                    title={product.NAME} />
-            </Link>
-            <CardContent>
-                <div className={classes.cardContent}>
-                    <Typography variant="h6" gutterBottom>
-                        {product.NAME} 
-                    </Typography>
-                    <br/>
-                    <div>
-                        <font className={classes.price}>
-                            {product.PRICE == null ? 'Enquire Price' : '£'+product.PRICE}
-                        </font>
-                    </div>
-                </div>
-                <br/>
-                <div>
-                    <Typography variant="body2" color="textSecondary">{product.DESCRIPTION}</Typography>  
-                </div>
-            </CardContent>
-            <CardActions disableSpacing className={classes.CardActions}>
-                <IconButton aria-label="Add to Cart">
-                    <AddShoppingCart />
-                </IconButton> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                <Button variant="contained" color="textSecondary" href={detailUrl} > VIEW </Button>
-            </CardActions>
-        </Card>
-    );
-}
+const Product = ({ product }) => {
+  let detailUrl = "/detail/?productid=" + product.ID;
+  return (
+    <Card>
+      <Link href={detailUrl}>
+        <img src={product.MEDIA} />
+      </Link>
+      <CardContent>
+        <Typography variant="body1" gutterBottom>
+          {product.NAME}
+        </Typography>
+        <Typography variant="body2">
+          {product.PRICE == null ? "Enquire Price" : "£" + product.PRICE}
+        </Typography>
+      </CardContent>
+      <CardActions disableSpacing >
+        <Button variant="contained" color="textSecondary" href={detailUrl}>
+          {" "}
+          VIEW{" "}
+        </Button>
+      </CardActions>
+    </Card>
+  );
+};
 
 export default Product;

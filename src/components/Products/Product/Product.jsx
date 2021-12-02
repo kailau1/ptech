@@ -7,29 +7,29 @@ import useStyles from '../../styles';
 
 const Product = ({product}) => {
     const classes = useStyles();
-    let detailUrl = "/detail/?productid=" + product.ID;
+    let detailUrl = "/detail/?productid=" + product.id;
     return (
         <Card className={classes.root}>
             <Link href={detailUrl}>
                 <CardMedia className={classes.media} 
-                    image = { product.MEDIA == null ? '/images/iphone-11WHITE2.png' : product.MEDIA }
-                    title={product.NAME} />
+                    image = { product.media == null ? '/images/iphone-11WHITE2.png' : product.media }
+                    title={product.name} />
             </Link>
             <CardContent>
                 <div className={classes.cardContent}>
                     <Typography variant="h6" gutterBottom>
-                        {product.NAME} 
+                        {product.name} 
                     </Typography>
                     <br/>
                     <div>
                         <font className={classes.price}>
-                            {product.PRICE == null ? 'Enquire Price' : '£'+product.PRICE}
+                            {product.price == null ? 'Enquire Price' : '£'+product.price}
                         </font>
                     </div>
                 </div>
                 <br/>
                 <div>
-                    <Typography variant="body2" color="textSecondary">{product.DESCRIPTION}</Typography>  
+                    <Typography variant="body2" color="textSecondary">{product.description}</Typography>  
                 </div>
             </CardContent>
             <CardActions disableSpacing className={classes.CardActions}>

@@ -21,6 +21,9 @@ let Products = () => {
             const result = await fetch(apiUrl);
             const body = await result.json();
             setItems(body);
+
+            console.log('Found products:', body)
+
         } catch(err) {
             return "Failed to fetch from api"+err;
         }

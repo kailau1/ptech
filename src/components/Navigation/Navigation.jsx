@@ -57,7 +57,7 @@ const Navigation = () => {
                         onClose={toggleDrawer(false)}
                         className={classes.drawer}
                         >
-                        <div id='nav' onclick={toggleDrawer(false)} className={classes.list}>
+                        <div id='nav' onClick={toggleDrawer(false)} className={classes.list}>
                             {list()}
                         </div>
                     </Drawer>

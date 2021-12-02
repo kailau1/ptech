@@ -17,7 +17,7 @@ const ProductDetail = () => {
     const [attribs, setAttribs] = useState([]);
     const [products, setProducts] = useState([]);
     const [cartUrl, setCartUrl] = useState([]);
-    // const [product, setProduct] = useState({ ID: "", NAME: "", DESCRIPTION: ""});
+    // const [product, setProduct] = useState({ id: "", name: "", description: ""});
     const attribUrl = "http://localhost:3000/attribs/" + productId;
     const productUrl = "http://localhost:3000/product/" + productId;
     // var cartUrl = "/cart";
@@ -35,7 +35,7 @@ const ProductDetail = () => {
                     setProducts(body);
                     console.log("single product found: " + JSON.stringify(body[0]))
                     var firstProduct = body[0];
-                    var url = '/cart?name='+firstProduct.NAME+'&price='+firstProduct.PRICE;
+                    var url = '/cart?name='+firstProduct.NAME+'&price='+firstProduct.price;
                     setCartUrl(url);
                     console.log('cartUrl='+url);
                     break;
@@ -67,8 +67,8 @@ const ProductDetail = () => {
                 <br/><br/>
                 {products != null && products.length && products.map(item => {
                     return  <CardMedia className={classes.media} 
-                        image = {item.MEDIA == null ? '/images/iphone-11WHITE2.png' : item.MEDIA }
-                        title={item.NAME} />
+                        image = {item.media == null ? '/images/iphone-11WHITE2.png' : item.media }
+                        title={item.name} />
                 })}
 
             </div>
@@ -85,7 +85,7 @@ const ProductDetail = () => {
 
                 {products != null && products.length && products.map(item => {
                 return <span className={classes.price}>
-                    £{item.PRICE}
+                    £{item.price}
                 </span>
                 })}
 
@@ -94,7 +94,7 @@ const ProductDetail = () => {
                 <h3>Product Specifications</h3>
                 <ul className={classes.smallCardContent}>
                 {attribs != null && attribs.length && attribs.map(item => {
-                        return <li>{item.NAME}&nbsp;: {item.VALUE}</li> 
+                        return <li>{item.name}&nbsp;: {item.value}</li> 
                 })}
                 </ul>
             </div>

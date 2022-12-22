@@ -9,45 +9,11 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import useStyles from '../styles';
 import Container from '@material-ui/core/Container';
 import Navigation from '../../components/Navigation/Navigation'
 import Box from '@material-ui/core/Box'
 import {Link} from 'react-router-dom';
-
-
-
-const useStyles = makeStyles((theme) => ({
-  icon: {
-    marginRight: theme.spacing(2),
-  },
-  heroContent: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(8, 0, 6),
-  },
-  heroButtons: {
-    marginTop: theme.spacing(4),
-  },
-  cardGrid: {
-    paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8),
-  },
-  card: {
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  cardMedia: {
-    paddingTop: '56.25%', // 16:9
-  },
-  cardContent: {
-    flexGrow: 1,
-  },
-  footer: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(6),
-  },
-}));
 
 const cards = [
   {id:1, location:"Bristol", map:"https://www.google.com/maps/dir//Currys+PC+World+Featuring+Carphone+Warehouse,+Unit+1+Cribbs+Causeway,+Bristol+BS34+5TX/@51.5112345,-2.5131588,8z/data=!3m1!5s0x487191805d17cc09:0x6e3ce34b056bafa5!4m8!4m7!1m0!1m5!1m1!1s0x4870cfcaf2de042d:0x895db98be0cd48a1!2m2!1d-2.6010799!2d51.5270912"},

@@ -7,10 +7,6 @@ import {Link} from 'react-router-dom';
 import { blueGrey } from '@material-ui/core/colors';
 import MenuOpenIcon from '@material-ui/icons/MenuOpen';
 
-
-
-
-
 const Navigation = () => {
     const classes = useStyles();
     const[state, setState] = React.useState(false)
@@ -18,7 +14,6 @@ const Navigation = () => {
         setState(open)
     }
     const list = () => (
-        <div onclick={toggleDrawer(false)} className={classes.list}>
             <List>
                 <ListItem>
                     <Link to="/">
@@ -44,7 +39,6 @@ const Navigation = () => {
                     </Link>
                 </ListItem>
             </List>
-        </div>
     )
     return (
             <AppBar position="fixed" className={classes.appBar} color="inherit">
@@ -63,7 +57,9 @@ const Navigation = () => {
                         onClose={toggleDrawer(false)}
                         className={classes.drawer}
                         >
-                        {list()}
+                        <div id='nav' onClick={toggleDrawer(false)} className={classes.list}>
+                            {list()}
+                        </div>
                     </Drawer>
                 </Toolbar>      
             </AppBar>

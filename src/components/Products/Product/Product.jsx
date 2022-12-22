@@ -2,29 +2,35 @@ import React from 'react';
 import { Card, CardMedia, CardContent, CardActions, Typography, IconButton, Button } from '@material-ui/core';
 import { AddShoppingCart } from '@material-ui/icons';
 import Link from '@material-ui/core/Link';
-import useStyles from './styles';
+import useStyles from '../../styles';
 
 
 const Product = ({product}) => {
     const classes = useStyles();
-    let detailUrl = "/detail/?productid=" + product.ID;
+    let detailUrl = "/detail/?productid=" + product.id;
     return (
         <Card className={classes.root}>
             <Link href={detailUrl}>
                 <CardMedia className={classes.media} 
-                    image = { product.MEDIA == null ? '/images/iphone-11WHITE2.png' : product.MEDIA }
-                    title={product.NAME} />
+                    image = { product.media == null ? '/images/iphone-11WHITE2.png' : product.media }
+                    title={product.name} />
             </Link>
             <CardContent>
-                <div className={classes.CardContent}>
-                    <Typography variant="h5" gutterBottom>
-                        {product.NAME} 
+                <div className={classes.cardContent}>
+                    <Typography variant="h6" gutterBottom>
+                        {product.name} 
                     </Typography>
-                    <font class='price'>
-                        {product.PRICE == null ? 'Enquire Price' : '£'+product.PRICE}
-                    </font>
+                    <br/>
+                    <div>
+                        <font className={classes.price}>
+                            {product.price == null ? 'Enquire Price' : '£'+product.price}
+                        </font>
+                    </div>
                 </div>
-                <Typography variant="body 2" color="textSecondary">{product.DESCRIPTION}</Typography>  
+                <br/>
+                <div>
+                    <Typography variant="body2" color="textSecondary">{product.description}</Typography>  
+                </div>
             </CardContent>
             <CardActions disableSpacing className={classes.CardActions}>
                 <IconButton aria-label="Add to Cart">

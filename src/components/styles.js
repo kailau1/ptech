@@ -5,6 +5,10 @@ import { MicNone } from '@material-ui/icons';
 const drawerWidth = 0;
 
 export default makeStyles((theme) => ({
+  root: {
+    maxWidth: '100%',
+    flexGrow: 1,
+  },
   appBar: {
     boxShadow: 'none',
     borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
@@ -13,6 +17,12 @@ export default makeStyles((theme) => ({
       marginLeft: drawerWidth,
     
     },
+  },
+  toolbar: theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.default,
+    padding: theme.spacing(3),
   },
   title: {
     flexGrow: 1,
@@ -71,37 +81,32 @@ export default makeStyles((theme) => ({
     }
   
   },
-  price: {
-    fontSize: '16px'
+  media: {
+      height: 0,
+      paddingTop: '55%'
   },
-  icon: {
-    marginRight: theme.spacing(2),
-  },
-  heroContent: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(8, 0, 6),
-  },
-  heroButtons: {
-    marginTop: theme.spacing(4),
-  },
-  cardGrid: {
-    paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8),
-  },
-  card: {
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  cardMedia: {
-    paddingTop: '56.25%', // 16:9
+  cardActions: {
+      display:'flex',
+      justifyContent: 'flex-end',
   },
   cardContent: {
-    flexGrow: 1,
+      display: 'flex',
+      justifyContent: 'space-between',
+      fontSize: '24px',
+      fontFamily: 'Arial',
   },
-  footer: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(6),
+  smallCardContent: {
+      fontSize: '14px',
+      fontFamily: 'Arial',
   },
+  priceOne: {
+      fontSize: '25px',
+      fontWeight: "bold",
+      fontFamily: 'Arial',
+  },
+  price: {
+      fontSize: '20px'
+  }
 
-  }));
+
+}));

@@ -3,7 +3,7 @@ This project is for the A-level coursework in 2021/2022. Also to study React JS,
 
 ## App structure
 
-![Flow_diagram](./public/images/Screenshot%202023-10-24%20at%2012.17.42.png)  
+![Flow_diagram](./public/images/Screenshot%202023-10-24%20at%2012.26.05.png)  
 
 
 ![Flow_diagram](./public/images/Screenshot%202023-10-24%20at%2012.10.53.png)  

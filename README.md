@@ -1,6 +1,14 @@
 # PTECH web app
 This project is for the A-level coursework in 2021/2022. Also to study React JS, HTML, CSS and Javascript. 
 
+## App structure
+
+![Flow_diagram](./public/images/Screenshot%202023-10-24%20at%2012.17.42.png)  
+
+
+![Flow_diagram](./public/images/Screenshot%202023-10-24%20at%2012.10.53.png)  
+
+
 ## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
